@@ -6,13 +6,19 @@ This is the Pi-native version of a Cursor notification relay: instead of watchin
 
 ## Install
 
+From npm:
+
+```bash
+pi install npm:@rdyson/pi-pushover
+```
+
 From GitHub:
 
 ```bash
 pi install git:github.com/rdyson/pi-pushover
 ```
 
-For a pinned version/tag:
+For a pinned GitHub version/tag:
 
 ```bash
 pi install git:github.com/rdyson/pi-pushover@v0.1.0
@@ -133,6 +139,26 @@ With this setting, only tasks that take at least 10 seconds trigger a notificati
 
 ```bash
 export PI_PUSHOVER_ENABLED=0
+```
+
+## Development
+
+Run tests:
+
+```bash
+npm test
+```
+
+Check package contents before publishing:
+
+```bash
+npm pack --dry-run
+```
+
+Publish to npm:
+
+```bash
+npm publish --access public
 ```
 
 ## Security

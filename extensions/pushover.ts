@@ -6,7 +6,7 @@ const EXT_NAME = "pushover";
 const PUSHOVER_API = "https://api.pushover.net/1/messages.json";
 const DEFAULT_ENV_FILE = `${process.env.HOME}/.config/pi-notifications/pushover.env`;
 
-type Config = {
+export type Config = {
 	enabled: boolean;
 	token?: string;
 	user?: string;
@@ -20,7 +20,7 @@ type Config = {
 	urlTitle?: string;
 };
 
-function parseEnvFile(path: string): Record<string, string> {
+export function parseEnvFile(path: string): Record<string, string> {
 	if (!existsSync(path)) return {};
 	const env: Record<string, string> = {};
 	const text = readFileSync(path, "utf8");
@@ -53,7 +53,7 @@ function numberSetting(value: string | undefined, defaultValue: number): number 
 	return Number.isFinite(parsed) ? parsed : defaultValue;
 }
 
-function loadConfig(): Config {
+export function loadConfig(): Config {
 	const envFile = process.env.PI_PUSHOVER_ENV_FILE ?? DEFAULT_ENV_FILE;
 	const fileEnv = parseEnvFile(envFile);
 	return {
@@ -71,7 +71,7 @@ function loadConfig(): Config {
 	};
 }
 
-function formatDuration(ms: number): string {
+export function formatDuration(ms: number): string {
 	const seconds = Math.max(0, Math.round(ms / 1000));
 	if (seconds < 60) return `${seconds}s`;
 	const minutes = Math.floor(seconds / 60);
@@ -82,7 +82,7 @@ function formatDuration(ms: number): string {
 	return `${hours}h ${minRest}m`;
 }
 
-async function sendPushover(config: Config, message: string, signal?: AbortSignal): Promise<void> {
+export async function sendPushover(config: Config, message: string, signal?: AbortSignal): Promise<void> {
 	if (!config.enabled) return;
 	if (!config.token || !config.user) {
 		throw new Error(`Pushover is missing PUSHOVER_TOKEN or PUSHOVER_USER. Configure ${DEFAULT_ENV_FILE} or environment variables.`);

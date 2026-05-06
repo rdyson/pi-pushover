@@ -1,5 +1,5 @@
 {
-  "name": "pi-pushover",
+  "name": "@rdyson/pi-pushover",
   "version": "0.1.0",
   "description": "Pushover notifications when Pi finishes agent tasks.",
   "keywords": [
@@ -27,5 +27,19 @@
     "@mariozechner/pi-coding-agent": {
       "optional": true
     }
-  }
+  },
+  "type": "module",
+  "scripts": {
+    "test": "node --import tsx --test test/*.test.ts",
+    "prepack": "npm test"
+  },
+  "devDependencies": {
+    "tsx": "^4.20.6"
+  },
+  "files": [
+    "extensions",
+    "examples",
+    "README.md",
+    "LICENSE"
+  ]
 }
