@@ -13,7 +13,7 @@
   "author": "Richard Dyson",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rdyson/pi-pushover.git"
+    "url": "git+https://github.com/rdyson/pi-pushover.git"
   },
   "pi": {
     "extensions": [
